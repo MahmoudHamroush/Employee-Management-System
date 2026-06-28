@@ -3,7 +3,6 @@ package com.Hamroush.employee_management.Controller;
 import com.Hamroush.employee_management.Model.Employee;
 import com.Hamroush.employee_management.Service.EmployeeService;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,23 +11,39 @@ import java.util.List;
 @RequestMapping("/employees")
 @Data
 public class EmployeeController {
-    @Autowired
+
     private final EmployeeService employeeService;
     public EmployeeController(EmployeeService employeeService){
         this.employeeService = employeeService;
     }
 
-    @GetMapping
+    // Add Employee
+    @PostMapping("/add")
+    public Employee addEmployee(@RequestBody Employee employee){
+
+        return employeeService.addEmployee(employee);
+    }
+    // Get All Employees
+    @GetMapping("/all")
     public List<Employee> getAllEmployees()
     {
+
         return employeeService.getAllEmployees();
     }
-    @PostMapping
-    public Employee addEmployee(@RequestBody Employee employee){
-        return employeeService.saveEmployee(employee);
+    // Get Employee By id
+    @GetMapping("/get/{id}")
+    public Employee getEmployeeById(@PathVariable Long id){
+        return employeeService.getEmployeeById(id);
     }
-    @DeleteMapping
-    public void deleteEmployeeById(Long id){
+    // Update Employee
+    @PutMapping("/update/{id}")
+    public Employee updateDepartment(@PathVariable Long id , @RequestBody Employee employee){
+        return employeeService.updateEmployee(id ,employee);
+    }
+    // Delete Employee By id
+    @DeleteMapping("/delete/{id}")
+    public void deleteEmployeeById(@PathVariable Long id){
+
         employeeService.deleteEmployee(id);
     }
 }

@@ -146,7 +146,7 @@
 				<configuration>
 					<url>jdbc:mysql://localhost:3306/employee_db</url>
 					<user>root</user>
-					<password>Hamroush@mysql_122775</password>
+					<password>hamroush@mysql</password>
 				</configuration>
 			</plugin>
 		</plugins>

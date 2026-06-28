@@ -5,9 +5,11 @@ import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
+@Data
 @Entity
 @Table(name = "employees")
 public class Employee {
